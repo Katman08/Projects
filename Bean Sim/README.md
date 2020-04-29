@@ -47,3 +47,9 @@ I custom coded c# scripts for the following game mechanics:
 6. Menu
 
 --contains two distinct levels and new levels and easily be added
+
+Issues to resolve:
+
+1. Large storage size
+2. Weird proportions on high quality moniters
+3. Several spots allow extra high jumps due to misaligned line colliders
