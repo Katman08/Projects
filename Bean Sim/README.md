@@ -25,5 +25,5 @@ I custom coded c# scripts for the following game mechanics:
 --on collison, coin is collected and score counter += 1
 --when all coins are collected, level is finished
 
-6.Menu
+6. Menu
 --contains two distinct levels and new levels and easily be added
