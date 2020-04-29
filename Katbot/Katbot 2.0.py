@@ -416,4 +416,4 @@ async def ping(ctx):
 @bot.command()             
 async def test(ctx):
     print(await vc.poll_voice_ws(reconnect=True))
-bot.run("NjkyOTEyNzMyNzA5NzE1OTk5.XoJjNQ.am5ySQmzeFbUzrRM3_Wn8TAyC9A")
+bot.run("TOKEN")
