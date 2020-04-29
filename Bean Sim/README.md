@@ -2,6 +2,7 @@ This is a simple 2d platformer created in unity.
 
 I custom coded c# scripts for the following game mechanics:
 
+
 1. Left/Right movement
 
 --acceleration and velocity cap accounted for
@@ -9,6 +10,7 @@ I custom coded c# scripts for the following game mechanics:
 --velocity cap customizable without changing code
 
 --movement speed customizable without changing code
+
 
 2. Jumping
 
@@ -18,11 +20,13 @@ I custom coded c# scripts for the following game mechanics:
 
 --must be touching line collider with tag "floor"
 
+
 3. Enemies
 
 --speed is customizable without changing code
 
 --kill player on collision
+
 
 4. Death and death counter
 
@@ -32,11 +36,13 @@ I custom coded c# scripts for the following game mechanics:
 
 --player is sent to menu when death counter = 0
 
+
 5. Coins and score counter
 
 --on collison, coin is collected and score counter += 1
 
 --when all coins are collected, level is finished
+
 
 6. Menu
 
