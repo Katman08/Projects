@@ -1,4 +1,5 @@
 This is a simple 2d platformer created in unity for the purpose of learning how to use the software.
+Download all files and place in the same folder to play.
 
 I custom coded c# scripts for the following game mechanics:
 
