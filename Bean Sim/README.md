@@ -1,4 +1,4 @@
-This is a simple 2d platformer created in unity.
+This is a simple 2d platformer created in unity for the purpose of learning how to use the software.
 
 I custom coded c# scripts for the following game mechanics:
 
