@@ -34,12 +34,12 @@ nextSong = asyncio.Event()
 @bot.event
 async def on_ready():
     for server in bot.guilds:
-        if not path.exists(server.name.replace(" ", "")):
-            os.mkdir(server.name.replace(" ", ""))
-            os.mkdir(server.name.replace(" ", "") + "/Music")
+        if not path.exists("C:/Users/Administrator/Desktop/Discord_Bot/" + server.name.replace(" ", "")):
+            os.mkdir("C:/Users/Administrator/Desktop/Discord_Bot/" + server.name.replace(" ", ""))
+            os.mkdir("C:/Users/Administrator/Desktop/Discord_Bot/" + server.name.replace(" ", "") + "/Music")
             print("Created a folder for " + server.name)
-    for item in os.listdir(server.name.replace(" ", "") + "/Music"):
-        os.remove(server.name.replace(" ", "") + "/Music/" + item)
+    for item in os.listdir("C:/Users/Administrator/Desktop/Discord_Bot/" + server.name.replace(" ", "") + "/Music"):
+        os.remove("C:/Users/Administrator/Desktop/Discord_Bot/" + server.name.replace(" ", "") + "/Music/" + item)
     print("ready to fuck")
 
 def PRINTSCgetURL():    
@@ -80,8 +80,8 @@ async def connect(ctx):
         print("Joining " + str(vc.channel))
 
     output = gTTS(random.choice(["katbot has joined the chat", "katbot is here", "sup boys katbot here"]))            
-    output.save("tts.mp3")
-    vc.play(discord.FFmpegPCMAudio("tts.mp3"))
+    output.save("C:/Users/Administrator/Desktop/Discord_Bot/" + ctx.guild.name.replace(" ", "") + "tts.mp3")
+    vc.play(discord.FFmpegPCMAudio("C:/Users/Administrator/Desktop/Discord_Bot/" + ctx.guild.name.replace(" ", "") + "tts.mp3"))
     
 @bot.command()
 async def effect(ctx, *choice): #soundboard
@@ -116,33 +116,33 @@ async def effect(ctx, *choice): #soundboard
                 #try:
                 choice = choice[0]
                 if choice == "1":    
-                    await vc.play(discord.FFmpegPCMAudio("rimshot.mp3"))
+                    await vc.play(discord.FFmpegPCMAudio("C:/Users/Administrator/Desktop/Discord_Bot/rimshot.mp3"))
                 elif choice == "2":
-                    await vc.play(discord.FFmpegPCMAudio("fellow.mp3"))
+                    await vc.play(discord.FFmpegPCMAudio("C:/Users/Administrator/Desktop/Discord_Bot/fellow.mp3"))
                 elif choice == "3":
-                    await vc.play(discord.FFmpegPCMAudio("tasty.mp3"))
+                    await vc.play(discord.FFmpegPCMAudio("C:/Users/Administrator/Desktop/Discord_Bot/tasty.mp3"))
                 elif choice == "4":
-                    await vc.play(discord.FFmpegPCMAudio("bitch.mp3"))
+                    await vc.play(discord.FFmpegPCMAudio("C:/Users/Administrator/Desktop/Discord_Bot/bitch.mp3"))
                 elif choice == "5":
-                    await vc.play(discord.FFmpegPCMAudio("evil_inc.mp3"))
+                    await vc.play(discord.FFmpegPCMAudio("C:/Users/Administrator/Desktop/Discord_Bot/evil_inc.mp3"))
                 elif choice == "6":
-                    await vc.play(discord.FFmpegPCMAudio("tmnt.mp3"))
+                    await vc.play(discord.FFmpegPCMAudio("C:/Users/Administrator/Desktop/Discord_Bot/tmnt.mp3"))
                 elif choice == "7":
-                    await vc.play(discord.FFmpegPCMAudio("bro.mp3"))
+                    await vc.play(discord.FFmpegPCMAudio("C:/Users/Administrator/Desktop/Discord_Bot/bro.mp3"))
                 elif choice == "8":
-                    await vc.play(discord.FFmpegPCMAudio("wiggle.mp3"))
+                    await vc.play(discord.FFmpegPCMAudio("C:/Users/Administrator/Desktop/Discord_Bot/wiggle.mp3"))
                 elif choice == "9":
-                    await vc.play(discord.FFmpegPCMAudio("suck.mp3"))
+                    await vc.play(discord.FFmpegPCMAudio("C:/Users/Administrator/Desktop/Discord_Bot/suck.mp3"))
                 elif choice == "10":
-                    await vc.play(discord.FFmpegPCMAudio("wrong.mp3"))
+                    await vc.play(discord.FFmpegPCMAudio("C:/Users/Administrator/Desktop/Discord_Bot/wrong.mp3"))
                 elif choice == "69":
-                    await vc.play(discord.FFmpegPCMAudio("userLeft.mp3"))
+                    await vc.play(discord.FFmpegPCMAudio("C:/Users/Administrator/Desktop/Discord_Bot/userLeft.mp3"))
                 elif choice == "420":
-                    await vc.play(discord.FFmpegPCMAudio("PenisLR.mp3"))
+                    await vc.play(discord.FFmpegPCMAudio("C:/Users/Administrator/Desktop/Discord_Bot/PenisLR.mp3"))
                 elif choice == "354":
-                    await vc.play(discord.FFmpegPCMAudio("OffsetPenis.mp3"))
+                    await vc.play(discord.FFmpegPCMAudio("C:/Users/Administrator/Desktop/Discord_Bot/OffsetPenis.mp3"))
                 elif choice == "543":
-                    await vc.play(discord.FFmpegPCMAudio("my-anaconda-BITCH.mp3"))
+                    await vc.play(discord.FFmpegPCMAudio("C:/Users/Administrator/Desktop/Discord_Bot/my-anaconda-BITCH.mp3"))
                 #except:
                 #    await ctx.channel.send("Connect to a voice channel using $connect")
 
@@ -158,45 +158,46 @@ async def on_voice_state_update(member, before, after): #join/leave effects & ac
     global vc
     try:
         if not before.channel == after.channel and after.channel == vc.channel: #joining channel
-            if member.nick == None:
-                output = gTTS(random.choice(["Some bitch joined the chat", "another ass assasinated", "oh fuck somebody joined"]))
-            elif member.bot:
+            print("User joined")
+            if member.bot:
                 output = gTTS(random.choice(["a robot has joined", "oh my cock and balls its a mother fucking robot", "a bot joined the chat"]))
             else:   
-                output = gTTS(member.nick + random.choice([" joined the chat", " is a bitch", " joined the mother fucking chat", " is here. yaaaay", " is here. damn", " is here. what a shame", " joined. hopefully they will leave soon"]))
-            output.save("tts.mp3")
-            await vc.play(discord.FFmpegPCMAudio("tts.mp3"))
+                output = gTTS(member.display_name + random.choice([" joined the chat", " is a bitch", " joined the mother fucking chat", " is here. yaaaay", " is here. damn", " is here. what a shame", " joined. hopefully they will leave soon"]))
+            output.save("C:/Users/Administrator/Desktop/Discord_Bot/" + member.guild.name.replace(" ", "") + "tts.mp3")
+            await vc.play(discord.FFmpegPCMAudio("C:/Users/Administrator/Desktop/Discord_Bot/" + member.guild.name.replace(" ", "") + "tts.mp3"))
             
         elif not after.channel == vc.channel: #leaving channel
-            if member.nick == None:
-                output = gTTS(random.choice(["An anonomous bastard left", "an assbitch left the channel", "aw shit somebody left"]))
-            elif member.bot:
+            print("User left")
+            if member.bot:
                 output = gTTS(random.choice(["a robot has left", "a bot left the chat"]))
             else:   
-                output = gTTS(member.nick + random.choice([" left the chat", " is a bitch and left", " left the mother fucking chat", " is no longer here. yaaaay", " left. damn", " is gone. what a shame", " left. hopefully they wont come back"]))
-            output.save("tts.mp3")
-            await vc.play(discord.FFmpegPCMAudio("tts.mp3"))
-
-    
-        print(await countMembers(vc.channel) + " non-bot users in current channel")
-        if await countMembers(vc.channel) == 0: #stay in active channel
-            print("current channel is empty")
-            print("scanning for activity")
-            numList = []
-            for channel in vc.guild.voice_channels:
-                num = await countMembers(channel)
-                numList.append(num)
-                if num == max(numList):
-                    activeChannel = channel
-            print("scan complete")
-            if await countMembers(activeChannel) == 0:
-                print("no users found")
-                await vc.disconnect()
-            else:
-                print("moving to " + str(activeChannel))
-                await vc.move_to(activeChannel) 
+                output = gTTS(member.display_name + random.choice([" left the chat", " is a bitch and left", " left the mother fucking chat", " is no longer here. yaaaay", " left. damn", " is gone. what a shame", " left. hopefully they wont come back"]))
+            output.save("C:/Users/Administrator/Desktop/Discord_Bot/" + member.guild.name.replace(" ", "") + "tts.mp3")
+            await vc.play(discord.FFmpegPCMAudio("C:/Users/Administrator/Desktop/Discord_Bot/" + member.guild.name.replace(" ", "") + "tts.mp3"))
     except:
         pass
+    #try:
+    print(str(await countMembers(vc.channel)) + " non-bot users in current channel")
+    if await countMembers(vc.channel) == 0: #stay in active channel
+        print("current channel is empty")
+        print("scanning for activity")
+        numList = []
+        for channel in vc.guild.voice_channels:
+            num = await countMembers(channel)
+            numList.append(num)
+            if num == max(numList):
+                activeChannel = channel
+        print("scan complete")
+        if await countMembers(activeChannel) == 0:
+            print("no users found")
+            await vc.disconnect()
+        elif activeChannel == vc.channel:
+            pass
+        else:
+            print("moving to " + str(activeChannel))
+            await vc.move_to(activeChannel) 
+    #except:
+    #    pass
     
 @bot.command()
 async def image(ctx, *args):
@@ -231,12 +232,19 @@ async def image(ctx, *args):
             await ctx.channel.send(embed=pic)
 
 @bot.command()
-async def say(ctx, *, message):
-    print(ctx.channel)
-    output = gTTS(message)
-    output.save("tts.mp3")
+async def say(ctx, *putin):
+    lang = putin[-1]
+    text = " ".join(putin[:len(putin)-1])
+    text_ = " ".join(putin)
     try:
-        vc.play(discord.FFmpegPCMAudio("tts.mp3"))
+        output = gTTS(text, lang=lang)
+        print("saying " + text + " with langauge code " + lang + " as requested by " + ctx.author.display_name)
+    except:
+        output = gTTS(text_)
+        print("saying " + text_ + " with langauge code en as requested by " + ctx.author.display_name)
+    output.save("C:/Users/Administrator/Desktop/Discord_Bot/" + ctx.guild.name.replace(" ", "") + "tts.mp3")
+    try:
+        vc.play(discord.FFmpegPCMAudio("C:/Users/Administrator/Desktop/Discord_Bot/" + ctx.guild.name.replace(" ", "") + "tts.mp3"))
     except:
         await ctx.channel.send("Connect to a voice channel using $connect")
 
@@ -248,8 +256,7 @@ async def spreadVC(ctx):
 @bot.command()
 async def coaster(ctx, *users):
     members = []
-    "698336923139309609"
-    track = bot.get_channel(693125008192700507).category.voice_channels #hard coded coaster location
+    track = bot.get_channel(698336923139309609).category.voice_channels #hard coded coaster location
     if users[0] == "all":
         for member in vc.channel.members:
             if not member.bot:
@@ -282,17 +289,17 @@ async def fortune(ctx):
         await ctx.send("You will die alone and depressed")
         
 def getSong(serverName, name):
-    for song in os.listdir(serverName + "/Music"):
+    for song in os.listdir("C:/Users/Administrator/Desktop/Discord_Bot/" + serverName + "/Music"):
         if name in song:
             return song
 
 def playNextSong(error):
     global queue
-    print(os.listdir(serverName + "/Music"))
+    print(os.listdir("C:/Users/Administrator/Desktop/Discord_Bot/" + serverName + "/Music"))
     print(queue[0]["video_id"])
-    for song in os.listdir(serverName + "/Music"):
+    for song in os.listdir("C:/Users/Administrator/Desktop/Discord_Bot/" + serverName + "/Music"):
         if queue[0]["video_id"] in song:
-            os.remove(serverName + "/Music/" + song)
+            os.remove("C:/Users/Administrator/Desktop/Discord_Bot/" + serverName + "/Music/" + song)
             
     queue.pop(0)
         
@@ -323,7 +330,7 @@ async def play(ctx, *, song):
                     newSong = yt.search(q=song,max_results=1, search_type="video")[0]
                     queue.append(newSong)
                     print("Attempting to download " + newSong["video_title"])
-                    os.system("youtube-dl --extract-audio -o " + serverName + "/Music/%(id)s.%(ext)s " + newSong["video_id"])
+                    os.system("youtube-dl --extract-audio -o " + "C:/Users/Administrator/Desktop/Discord_Bot/" + serverName + "/Music/%(id)s.%(ext)s " + newSong["video_id"])
                     print("Download Successful")
                     
                 while len(queue) > 0:
@@ -344,7 +351,7 @@ async def play(ctx, *, song):
                 queue.append(newSong)
                 print("Adding " + newSong["video_title"] + " to queue")
                 print("Attempting to download " + newSong["video_title"])
-                os.system("youtube-dl --extract-audio -o " + serverName + "/Music/%(id)s.%(ext)s " + newSong["video_id"])
+                os.system("youtube-dl --extract-audio -o " + "C:/Users/Administrator/Desktop/Discord_Bot/" + serverName + "/Music/%(id)s.%(ext)s " + newSong["video_id"])
                 print("Download Successful")
                 await loading.edit(content=newSong["video_title"] + " by " + newSong["channel_title"] + " has been added to the queue")
 
@@ -424,8 +431,8 @@ async def resume(ctx):
 
 @bot.command()             
 async def clearqueue(ctx):
-    for item in os.listdir(serverName + "/Music"):
-        os.remove(serverName + "/Music" + item)
+    for item in os.listdir("C:/Users/Administrator/Desktop/Discord_Bot/" + serverName + "/Music"):
+        os.remove("C:/Users/Administrator/Desktop/Discord_Bot/" + serverName + "/Music" + item)
         
     await ctx.channel.send("Queue cleared")
     
@@ -446,4 +453,4 @@ async def disconnect(ctx):
 async def ping(ctx):
     await ctx.send("Ping = {}ms".format(round(bot.latency), 2))
 
-bot.run("TOKEN")
+bot.run("NjkyOTEyNzMyNzA5NzE1OTk5.XqmtJg.J4UkUb1BdsZu61npoedNX6bCg44")
