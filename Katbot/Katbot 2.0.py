@@ -453,4 +453,4 @@ async def disconnect(ctx):
 async def ping(ctx):
     await ctx.send("Ping = {}ms".format(round(bot.latency), 2))
 
-bot.run("NjkyOTEyNzMyNzA5NzE1OTk5.XqmtJg.J4UkUb1BdsZu61npoedNX6bCg44")
+bot.run("TOKEN")
