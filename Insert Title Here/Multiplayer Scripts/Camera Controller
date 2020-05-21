@@ -1,0 +1,37 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using Mirror;
+
+public class MPCameraController : MonoBehaviour
+{
+
+    public float mouseSpeed = 1f;
+    
+    Rigidbody player;
+    GameObject head;
+
+    void Start()
+    {
+        
+
+        player = transform.root.gameObject.GetComponent<Rigidbody>();
+        head = transform.parent.gameObject;
+
+    }
+
+    void Update()
+    {
+        if (!transform.root.GetComponent<MPControls>().isLocalPlayer)
+        {
+            gameObject.GetComponent<Camera>().enabled = false;
+            gameObject.GetComponent<AudioListener>().enabled = false;
+        }
+        else
+        {
+            player.transform.Rotate(0, Input.GetAxis("Mouse X") * mouseSpeed, 0, Space.Self);
+            head.transform.Rotate(Input.GetAxis("Mouse Y") * -mouseSpeed, 0, 0, Space.Self);
+        }
+    }
+}
