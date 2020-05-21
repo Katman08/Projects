@@ -14,7 +14,7 @@ I custom coded c# scripts for the following game mechanics:
 
 2. Jumping
 
---Jjp height customizable without changing code
+--Jump height customizable without changing code
 
 --current left/right movement accounted for
 
