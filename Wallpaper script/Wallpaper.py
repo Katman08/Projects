@@ -5,26 +5,35 @@ import time
 import praw
 import os
 
-path = ""
+path = "C:/Users/Alex/OneDrive/Pictures/Wallpaper/"
 
 print("Connecting to reddit API...")
-reddit = praw.Reddit(client_id="",
-                     client_secret="",
-                     user_agent="",
-                     username="",
-                     password="")
-
-print("Retrieving image...")
-submission = random.choice(list(reddit.subreddit(random.choice(["wallpaper", "wallpapers"])).hot(limit=100)))
-binaryContent = requests.get(submission.url).content
+reddit = praw.Reddit(client_id="jJAuiW1OnsnLZQ",
+                     client_secret="qqj4vjK3OKRA3o6_Tjzz2bR_iXA",
+                     user_agent="bgbyghuiolagayuhibnolfabnhiugdf",
+                     username="RedditScrapper12",
+                     password="Password@69")
 
 print("Creating empty file...")
 temp = Image.open(path + "empty.png").copy()
 temp.save(path + "Background.png")
 
-print("Overwriting binary content...")
 background = open(path + "Background.png", "wb")
-background.write(binaryContent)
+
+print("Retrieving submission...")
+
+submission = random.choice(list(reddit.subreddit(random.choice(["wallpaper", "wallpapers"])).hot(limit=100)))
+while not submission.domain == "i.redd.it" and not submission.domain == "i.imgur.com" or submission.is_video:
+    print("Submission not valid")
+    print("Retrieving new submission...")
+    submission = random.choice(list(reddit.subreddit(random.choice(["wallpaper", "wallpapers"])).hot(limit=100)))
+
+print("Extracting binary")
+ImageContent = requests.get(submission.url).content
+
+print("Overwriting binary content of empty file...")
+background.write(ImageContent)
+
 background.close()
 
 background = Image.open(path + "Background.png")
@@ -56,6 +65,8 @@ print("Saving wallpaper...")
 output.save(path + "Wallpaper.png")
 
 print("Attempting to force wallpaper change...")
-os.system(path + "refresh.bat")
-
+print("Terminal may be closed once wallpaper changes")
+for x in range(200):
+    os.system("powershell.exe RUNDLL32.EXE USER32.DLL,UpdatePerUserSystemParameters")
+    
 print("Script completed successfully")
