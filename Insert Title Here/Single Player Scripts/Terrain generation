@@ -1,0 +1,122 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Security.Cryptography;
+using UnityEngine;
+
+public class Generation : MonoBehaviour
+{
+
+    public int tileSize = 10;
+    public GameObject[] tileTypes;
+    System.Random rand = new System.Random();
+
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            
+            GameObject[] allTiles;
+            allTiles = GameObject.FindGameObjectsWithTag("Floor");
+
+            bool xPositive = false;
+            bool xNegative = false;
+            bool zPositive = false;
+            bool zNegative = false;
+
+            bool xzPositive = false;
+            bool xzNegative = false;
+            bool xPoszNeg = false;
+            bool xNegzPos = false;
+
+            foreach (GameObject tile in allTiles)
+            {
+
+                if (tile.transform.position == new Vector3(transform.position.x + tileSize, transform.position.y, transform.position.z))
+                {
+                    xPositive = true;
+                }
+
+                if (tile.transform.position == new Vector3(transform.position.x - tileSize, transform.position.y, transform.position.z))
+                {
+                    xNegative = true;
+                }
+
+                if (tile.transform.position == new Vector3(transform.position.x, transform.position.y, transform.position.z + tileSize))
+                {
+                    zPositive = true;
+                }
+
+                if (tile.transform.position == new Vector3(transform.position.x, transform.position.y, transform.position.z - tileSize))
+                {
+                    zNegative = true;
+                }
+
+
+
+                if (tile.transform.position == new Vector3(transform.position.x + tileSize, transform.position.y, transform.position.z + tileSize))
+                {
+                    xzPositive = true;
+                }
+
+                if (tile.transform.position == new Vector3(transform.position.x - tileSize, transform.position.y, transform.position.z - tileSize))
+                {
+                    xzNegative = true;
+                }
+
+                if (tile.transform.position == new Vector3(transform.position.x + tileSize, transform.position.y, transform.position.z - tileSize))
+                {
+                    xPoszNeg = true;
+                }
+
+                if (tile.transform.position == new Vector3(transform.position.x - tileSize, transform.position.y, transform.position.z + tileSize))
+                {
+                    xNegzPos = true;
+                }
+            }
+
+            if (!xPositive)
+            {
+                Instantiate(tileTypes[rand.Next(tileTypes.Length)], new Vector3(transform.position.x + tileSize, transform.position.y, transform.position.z), transform.rotation);
+            }
+
+            if (!xNegative)
+            {
+                Instantiate(tileTypes[rand.Next(tileTypes.Length)], new Vector3(transform.position.x - tileSize, transform.position.y, transform.position.z), transform.rotation);
+            }
+
+            if (!zPositive)
+            {
+                Instantiate(tileTypes[rand.Next(tileTypes.Length)], new Vector3(transform.position.x, transform.position.y, transform.position.z + tileSize), transform.rotation);
+            }
+
+            if (!zNegative)
+            {
+                Instantiate(tileTypes[rand.Next(tileTypes.Length)], new Vector3(transform.position.x, transform.position.y, transform.position.z - tileSize), transform.rotation);
+            }
+
+
+
+            if (!xzPositive)
+            {
+                Instantiate(tileTypes[rand.Next(tileTypes.Length)], new Vector3(transform.position.x + tileSize, transform.position.y, transform.position.z + tileSize), transform.rotation);
+            }
+
+            if (!xzNegative)
+            {
+                Instantiate(tileTypes[rand.Next(tileTypes.Length)], new Vector3(transform.position.x - tileSize, transform.position.y, transform.position.z - tileSize), transform.rotation);
+            }
+
+            if (!xPoszNeg)
+            {
+                Instantiate(tileTypes[rand.Next(tileTypes.Length)], new Vector3(transform.position.x + tileSize, transform.position.y, transform.position.z - tileSize), transform.rotation);
+            }
+
+            if (!xNegzPos)
+            {
+                Instantiate(tileTypes[rand.Next(tileTypes.Length)], new Vector3(transform.position.x - tileSize, transform.position.y, transform.position.z + tileSize), transform.rotation);
+            }
+        }
+    }
+}
