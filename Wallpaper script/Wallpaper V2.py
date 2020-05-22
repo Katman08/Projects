@@ -8,11 +8,11 @@ import os
 path = "C:/Users/Alex/OneDrive/Pictures/Wallpaper/"
 
 print("Connecting to reddit API...")
-reddit = praw.Reddit(client_id="jJAuiW1OnsnLZQ",
-                     client_secret="qqj4vjK3OKRA3o6_Tjzz2bR_iXA",
-                     user_agent="bgbyghuiolagayuhibnolfabnhiugdf",
-                     username="RedditScrapper12",
-                     password="Password@69")
+reddit = praw.Reddit(client_id="",
+                     client_secret="",
+                     user_agent="",
+                     username="",
+                     password="")
 
 print("Creating empty file...")
 temp = Image.open(path + "empty.png").copy()
