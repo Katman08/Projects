@@ -1,0 +1,21 @@
+<SongDownloader>:
+    songInput: songInput
+
+    BoxLayout:
+        orientation: "vertical"
+
+        Label:
+            text: "Input song below"
+    
+        TextInput:
+            id: songInput
+            multiline: False
+            font_size: 120
+
+        Button:
+            text: "Download Audio"
+            on_press: root.audioDownload()
+
+        Button:
+            text: "Download Video"
+            on_press: root.videoDownload()
