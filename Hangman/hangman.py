@@ -13,12 +13,14 @@ def mostCommonChar(list):
         for char in string.ascii_lowercase:
             if char in word and not char in guessedLetters:
                 results[char] += 1
-
-    return max(results, key=results.get)
+    
+    return max(results, key=results.get), str(round(results.get(max(results, key=results.get))/len(list), 4)*100)[:4]
     
 def main(possibleWords):
     global wrongGuesses
     newPossibleWords = []
+    print("|<--------->|")
+
     
     if len(possibleWords) == 1:
         print(f"Answer: {possibleWords[0]}")
@@ -31,9 +33,9 @@ def main(possibleWords):
     
     print(f"{str(len(possibleWords))} possible words")
     
-    guess = mostCommonChar(possibleWords)
+    guess, prob = mostCommonChar(possibleWords)
     guessedLetters.append(guess)
-    print(f"Guess: {guess}")
+    print(f"Guess: {guess} ({prob}% Chance)")
 
     correct = input("Correct? (y/n) ").lower()
     while not correct in ["y","n"]:
