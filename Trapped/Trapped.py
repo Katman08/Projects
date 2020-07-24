@@ -14,7 +14,7 @@ green = (0, 255, 0)
 width = 700
 height = 400
 screen = pygame.display.set_mode((width,height))
-pygame.display.set_caption("g")
+pygame.display.set_caption("Trapped")
 killList = []
 possibleDirections = ["up", "down", "left", "right"]
 font = pygame.font.SysFont("comicsansms", 35)
